@@ -5,11 +5,16 @@
 class Ball {
 
 private:
-  std::string m_color{};
-  int m_rad{};
+  static constexpr std::string_view default_color = "black";
+  static constexpr int default_rad{10};
+  std::string m_color;
+  int m_rad;
 
 public:
-  Ball(std::string color, int rad) : m_color{color}, m_rad{rad} {}
+  Ball(int rad) : Ball{default_color, rad} {}
+
+  Ball(std::string_view color = default_color, int rad = default_rad)
+      : m_color{color}, m_rad{rad} {}
 
   const std::string &get_color() const { return m_color; }
   int get_radius() const { return m_rad; }
@@ -21,9 +26,10 @@ void print(const Ball &ball) {
 }
 
 int main() {
-  Ball blue{"blue", 10};
-  print(blue);
-
-  Ball red{"red", 20};
-  print(red);
+  Ball def{};
+  Ball blue{"blue"};
+  Ball twenty{20};
+  Ball blueTwenty{"blue", 20};
+  print(twenty);
+  return 0;
 }
