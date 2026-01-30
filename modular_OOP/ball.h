@@ -7,7 +7,7 @@
 class Ball {
 
 private:
-  // variable definitions are implmented in .h
+  // variable definitions are implmented in .h and defaults
   static constexpr std::string_view default_color = "black";
   static constexpr int default_rad{10};
 
@@ -15,8 +15,8 @@ private:
   int m_rad;
 
 public:
-  // defaults are only defined in the .h at least in the copy value form
-  // x=x_default
+  // defaults are only defined via argumnts in the .h at least in the copy value
+  // form x=x_default
   Ball(int rad);
   Ball(std::string_view color = default_color, int rad = default_rad);
 
